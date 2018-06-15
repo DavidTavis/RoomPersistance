@@ -24,6 +24,9 @@ public interface QuoteDao {
     @Query("SELECT * FROM quote_table WHERE quote LIKE :quote LIMIT 1")
     Quote findByName(String quote);
 
+    @Query("SELECT * FROM quote_table WHERE uid LIKE :uid LIMIT 1")
+    Quote findByID(int uid);
+
     @Insert
     void insert(Quote quote);
 

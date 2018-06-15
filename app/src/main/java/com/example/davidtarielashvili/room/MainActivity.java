@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.davidtarielashvili.CurrentQuote;
 import com.example.davidtarielashvili.QuoteDialog;
 
 import java.util.List;
@@ -13,6 +14,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private TextView tvQuote;
+    private CurrentQuote currentQuote;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,11 +39,15 @@ public class MainActivity extends AppCompatActivity {
         QuoteDao quoteDao = QuoteRoomDatabase.getDatabase(getApplicationContext()).quoteDao();
         quoteDao.getAllQuote().observe(this, (List<Quote> quoteList) -> {
             Quote quoteLast = quoteList.get(quoteList.size() - 1);
+            currentQuote = new CurrentQuote(quoteLast.getQuote(),quoteLast.getUid());
             tvQuote.setText(quoteLast.getQuote());
         });
 
         ImageButton nextBtn = findViewById(R.id.next_btn);
         nextBtn.setOnClickListener(view -> {
+            Quote quoteLast = quoteDao.findByID(currentQuote.getUid());
+            currentQuote = new CurrentQuote(quoteLast.getQuote(),quoteLast.getUid());
+            tvQuote.setText(quoteLast.getQuote());
         });
 
 
