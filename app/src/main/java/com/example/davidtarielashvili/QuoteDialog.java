@@ -44,7 +44,7 @@ public class QuoteDialog {
                 else{
                     Quote content = new Quote(message);
                     //add new quote to database
-                    QuoteDao quoteDao = QuoteRoomDatabase.getDatabase(context).quoteDao();
+                    QuoteDao quoteDao = QuoteRoomDatabase.Companion.getDatabase(context).quoteDao();
                     quoteDao.insert(content);
                 }
             }
