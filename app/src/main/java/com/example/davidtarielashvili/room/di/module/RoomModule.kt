@@ -27,19 +27,19 @@ class RoomModule(mApplication: Application) {
 
     @Singleton
     @Provides
-    internal fun providesRoomDatabase(): QuoteRoomDatabase {
+    internal fun quoteRoomDatabase(): QuoteRoomDatabase {
         return roomDatabase
     }
 
     @Singleton
     @Provides
-    internal fun providesQuoteDao(roomDatabase: QuoteRoomDatabase): QuoteDao {
+    internal fun quoteDao(roomDatabase: QuoteRoomDatabase): QuoteDao {
         return roomDatabase.quoteDao()
     }
 
     @Singleton
     @Provides
-    internal fun providesDataRepository(quoteDao: QuoteDao): QuoteRepository {
+    internal fun quoteRepository(quoteDao: QuoteDao): QuoteRepository {
         return QuoteRepository(quoteDao)
     }
 

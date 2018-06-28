@@ -15,19 +15,19 @@ import dagger.Component
  */
 
 @Singleton
-@Component(dependencies = arrayOf(), modules = arrayOf(AppModule::class, RoomModule::class))
+@Component(dependencies = arrayOf(), modules = arrayOf( RoomModule::class))
 interface AppComponent {
 
     fun inject(mainActivity: MainActivity)
 
-    fun inject(dialog: QuoteDialog)
+//    fun inject(dialog: QuoteDialog)
 
-    fun quoteDao(): QuoteDao
+//    fun quoteDao(): QuoteDao
+//
+//    fun quoteDatabase(): QuoteRoomDatabase
 
-    fun quoteDatabase(): QuoteRoomDatabase
+//    fun quoteRepository(): QuoteRepository
 
-    fun quoteRepository(): QuoteRepository
-
-    fun application(): Application
+//    fun application(): Application
 
 }

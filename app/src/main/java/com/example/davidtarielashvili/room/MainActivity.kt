@@ -12,26 +12,30 @@ import com.example.davidtarielashvili.room.di.module.AppModule
 import com.example.davidtarielashvili.room.di.module.RoomModule
 import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+ class MainActivity : AppCompatActivity() {
 
     private var tvQuote: TextView? = null
     private var currentQuote: CurrentQuote? = null
 
-
-    val component: AppComponent by lazy {
-        DaggerAppComponent
-                .builder()
-                .appModule(AppModule(application))
-                .roomModule(RoomModule(application))
-                .build()
-    }
+    @Inject
+    lateinit  var quoteRepository: QuoteRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val component: AppComponent by lazy {
+            DaggerAppComponent
+                    .builder()
+//                .appModule(AppModule(application))
+                    .roomModule(RoomModule(application))
+                    .build()
+        }
+
         component.inject(this)
-        var quoteRepository: QuoteRepository? = component.quoteRepository()
+
+//        val quoteRepository: QuoteRepository? = component.quoteRepository()
+
 
         tvQuote = findViewById(R.id.tv_quote)
 

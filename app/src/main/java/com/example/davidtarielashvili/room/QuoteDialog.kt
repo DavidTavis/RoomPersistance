@@ -2,23 +2,10 @@ package com.example.davidtarielashvili.room
 
 import android.app.AlertDialog
 import android.content.Context
-import android.content.DialogInterface
 import android.text.TextUtils
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.EditText
 import android.widget.Toast
-
-import com.example.davidtarielashvili.room.Quote
-import com.example.davidtarielashvili.room.QuoteDao
-import com.example.davidtarielashvili.room.QuoteRepository
-import com.example.davidtarielashvili.room.QuoteRoomDatabase
-import com.example.davidtarielashvili.room.R
-import com.example.davidtarielashvili.room.di.component.AppComponent
-import com.example.davidtarielashvili.room.di.component.DaggerAppComponent
-import com.example.davidtarielashvili.room.di.module.AppModule
-
-import javax.inject.Inject
 
 /**
  * Created by david.tarielashvili on 6/15/2018.
